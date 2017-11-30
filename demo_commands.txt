@@ -1,0 +1,10 @@
+cf push attendees-v2 -m 768M -n attendees-breathable-unpreferableness-temp
+cf map-route attendees-v2 cfapps.io -n attendees-breathable-unpreferableness
+cf apps
+cf scale attendees -i 1
+cf scale attendees-v2 -i 2
+cf unmap-route attendees cfapps.io -n attendees-breathable-unpreferableness
+cf unmap-route attendees-v2 cfapps.io -n attendees-breathable-unpreferableness-temp
+cf delete attendees
+cf rename attendees-v2 attendees
+cf restart attendees
